@@ -1,0 +1,9 @@
+alert http any any -> any any (msg:"HTTP GET Request"; http.method; content:"GET"; sid:1000001;)
+
+drop ip 192.168.1.100 any -> any any (msg:"Blocked IP address"; sid:1000002;)
+
+alert tcp any any -> any 22 (msg:"SSH Login Attempt"; flags:S; sid:1000003;)
+
+alert udp any any -> any 53 (msg:"Outbound DNS Query"; sid:1000004;)
+
+alert icmp any any -> any any (msg:"ICMP Packet"; sid:1000005;)
